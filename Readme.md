@@ -1,6 +1,6 @@
 # Storyline Segmentation
 
-A java based implementation that uses graph representation and island identification to process data about comic book characters (Marvel, Naruto etc) and segment them into independent storylines.
+A java based implementation that uses graph representation and island (connected component) identification to process data about comic book characters (Marvel, Naruto etc) and segment them into independent storylines.
 
 Part of Assignmet 4 of COL106 course 2020.
 
@@ -16,6 +16,11 @@ For example, consider an example about characters from the Marvel Cinematic Univ
 ### Independent Storyline
 
 We define an independent storyline as a set of characters, whose origins, past history and any interaction is only limited to other characters in the set. 
+
+<p align="center">
+  <img src="assets/marvel_graph.png" width="400"/><br>
+	Here, all avengers heroes are in the same storyline, while deadpool is in an independent storyline
+</p>
 
 Thus, independent storylines of a Comic Universe (marvel, naruto etc.) can be considered as separate movies or series of their own.
 
@@ -36,6 +41,11 @@ Finally, the each independent storyline is identified.
 ### Identifying Independent Storylines
 
 If two characters are in two different storylines, then they must not have a co-occurrence with any third character. Thus, in the graph representation, there should not be a path between the two nodes corresponding to the characters. Conversely, if there is a path from one node to another, then the charcters corresponding to these nodes need to be in the same storyline. Thus, with the graph representation ready, we effectively need to find islands of connected nodes (connected components). In each connected component, all the nodes have paths to and from each other, and any two nodes from two different components do not have a path connecting them. Thus, in terms of the graph representation, an independent storyline is simply a **connected component**.
+
+<p align="center">
+  <img src="assets/connected_components.png" width="400"/><br>
+  Connected Components
+</p>
 
 So, the problem reduces to finding the connected components of the graph representation already obtained. Performing **DFS** (Depth-First-Search) on the graph starting from any node would give all nodes connected with it. Thus, this will give a single connected component within the graph and containing that starting node. Chosing another node from the remaining nodes and performing DFS again would give another connected component. Repeating this process untill all nodes have been covered would lead to the identification of all of the connected components in the graph, and thus, all of the independent storylines in the comic Universe. 
 
