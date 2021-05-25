@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 
-public class A4_2019CS10341{
+public class StoryLineSegmentor{
 	public static void main(String args[]) throws Exception{
 		String nodesCSV;
 		String edgesCSV;
@@ -15,7 +15,7 @@ public class A4_2019CS10341{
 			functionName = args[2];
 		}
 		catch(Exception e) {
-			throw new Exception("Invalid syntax, please run: java A4_2019CS10341 <nodes.csv> <edges.csv> <functionName>");
+			throw new Exception("Invalid syntax, please run: java StoryLineSegmentor <nodes.csv> <edges.csv> <functionName>");
 		}
 
 		
@@ -134,7 +134,7 @@ class UnDirectedGraph{
 		else{
 			average = String.format("%.2f", 2 * E_f / V_f);
 		}
-		System.out.println(average);
+		System.out.println("\nThe average number of co-occurrences is: " + average + "\n");
 	}
 
 	private void merge(int[] sortArr, int[] arr, int low, int mid, int high){
@@ -210,11 +210,9 @@ class UnDirectedGraph{
 
 		for (int i = 0; i<this.V; i++){
 			int index = indices[i];
-			System.out.print(vertices.get(index).label);
-			if(i<this.V - 1){
-				System.out.print(",");
-			}
+			System.out.println(String.format("%-10s : %-30s (%s)" , "Rank "+(i+1), vertices.get(index).label, "co-occurrences: "+co_occurrences[i] ));
 		}
+		System.out.print("\n");
 	}
 
 
@@ -277,6 +275,7 @@ class UnDirectedGraph{
 		components = temp;
 
 		for(int i = 0; i<components.size(); i++){
+			System.out.print("\nStory-line " + (i+1) + ": \n");
 			int indices[] = new int[components.get(i).size()];
 			int ones[] = new int[components.get(i).size()];
 			for(int j = 0; j<components.get(i).size(); j++){
@@ -285,9 +284,9 @@ class UnDirectedGraph{
 			}
 			this.MergeSort(ones, indices, 0, components.get(i).size()-1);
 			for(int j = 0; j<components.get(i).size(); j++){
-				System.out.print(this.vertices.get(indices[j]).label);
+				System.out.print("|  "+this.vertices.get(indices[j]).label);
 				if(j<components.get(i).size() - 1){
-					System.out.print(",");
+					System.out.print("\n");
 				}
 			}
 			System.out.print("\n");

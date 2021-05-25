@@ -18,7 +18,7 @@ For example, consider an example about characters from the Marvel Cinematic Univ
 We define an independent storyline as a set of characters, whose origins, past history and any interaction is only limited to other characters in the set. 
 
 <p align="center">
-  <img src="assets/marvel_graph.png" width="400"/><br>
+  <img src="assets/marvel_graph.png" width="500"/><br>
 	Here, all avengers heroes are in the same storyline, while deadpool is in an independent storyline
 </p>
 
@@ -50,5 +50,25 @@ If two characters are in two different storylines, then they must not have a co-
 So, the problem reduces to finding the connected components of the graph representation already obtained. Performing **DFS** (Depth-First-Search) on the graph starting from any node would give all nodes connected with it. Thus, this will give a single connected component within the graph and containing that starting node. Chosing another node from the remaining nodes and performing DFS again would give another connected component. Repeating this process untill all nodes have been covered would lead to the identification of all of the connected components in the graph, and thus, all of the independent storylines in the comic Universe. 
 
 
+## Instructions for use
 
+To test the code with sample marvel data; first clone the repo, then go inside the repo directory and run the following commands in a terminal:
+~~~
+make build 
+make average
+make rank
+make segment
+~~~
 
+To test the code with custom data; first clone the repo, then go inside the repo directory and add the nodes' and edges' csv files in the data directory. Finally, run the folowing commands with the paths to these csv files:
+
+~~~
+make build 
+java StoryLineSegmentor <nodes file path> <edges file path> average
+java StoryLineSegmentor <nodes file path> <edges file path> rank
+java StoryLineSegmentor <nodes file path> <edges file path> independent_storylines_dfs
+~~~
+
+## Sample Outputs
+
+The sample outputs obtained for the sample marvel data currently in the repo can be found here: [average](data/average.txt), [rankings](data/rankings.txt) and [storylines](data/storylines.txt).

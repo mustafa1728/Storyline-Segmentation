@@ -1,0 +1,4 @@
+Processing graph to get average co-occurrences...
+
+The average number of co-occurrences is: 60.50
+
