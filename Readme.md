@@ -2,7 +2,7 @@
 
 A java based implementation that uses graph representation and island (connected component) identification to process data about comic book characters (Marvel, Naruto etc) and segment them into independent storylines.
 
-Part of Assignmet 4 of COL106 course 2020.
+Part of Assignmet 4 of the course COL106: Data Structures and Algorithms, first semester 2020.
 
 ## Problem statement
 
